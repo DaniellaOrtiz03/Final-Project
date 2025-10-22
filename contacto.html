@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Scrapbook Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="ContactUs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-book-heart"></i>
+                <span>Scrapbook Digital</span>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="crear.html" class="nav-link">Crear Scrapbook</a></li>
+                    <li><a href="galeria.html" class="nav-link">Galería</a></li>
+                    <li><a href="tienda.html" class="nav-link">Tienda</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <button class="btn-secondary" onclick="window.location.href='login.html'">
+                    <i class="fas fa-user"></i>
+                    Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>¿Necesitas ayuda?</h3>
+                    <p>Estamos aquí para ayudarte a crear los mejores scrapbooks digitales. Nuestro equipo de soporte está disponible para resolver cualquier duda o problema que puedas tener.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@scrapbookdigital.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Creative Street, Design City</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <span>Lunes - Viernes: 9:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+            
+            <div class="contact-features">
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Soporte 24/7</h4>
+                    <p>Nuestro equipo está disponible para ayudarte en cualquier momento</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Ideas Creativas</h4>
+                    <p>Te ayudamos a encontrar inspiración para tus scrapbooks</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h4>Soporte Técnico</h4>
+                    <p>Resolvemos cualquier problema técnico rápidamente</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Atención Personalizada</h4>
+                    <p>Cada usuario recibe atención personalizada y única</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Scrapbook Digital</h3>
+                    <p>Crea, personaliza y comparte tus recuerdos más preciados de manera digital.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="crear.html">Crear Scrapbook</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Términos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Scrapbook Digital. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Contact form functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && subject && message) {
+                alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
+                this.reset();
+            } else {
+                alert('Por favor, completa todos los campos');
+            }
+        });
+    </script>
+</body>
+</html>

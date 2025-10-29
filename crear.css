@@ -1,0 +1,1624 @@
+/* Template Selection Styles - Canva Style */
+.template-selection {
+    padding: 4rem 0 2rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: calc(100vh - 80px);
+}
+
+.selection-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.selection-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.selection-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.template-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.template-categories .category-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.template-categories .category-btn.active,
+.template-categories .category-btn:hover {
+    border-color: #e91e63;
+    color: #e91e63;
+    background: rgba(233, 30, 99, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.template-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.template-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.template-preview {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.template-preview-content {
+    width: 120px;
+    height: 80px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.template-book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.template-book-spine {
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 16px;
+    height: 100%;
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    border-radius: 8px 0 0 8px;
+    box-shadow: -3px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.template-book-page {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.template-page-content {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.template-page-content i {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.template-page-content span {
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+/* Template specific styles - Spiral Notebook */
+.spiral-notebook {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #e8f4fd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.notebook-pages {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.left-page,
+.right-page {
+    flex: 1;
+    background: white;
+    position: relative;
+}
+
+.left-page {
+    border-radius: 8px 0 0 8px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.right-page {
+    border-radius: 0 8px 8px 0;
+    position: relative;
+}
+
+.spiral-binding {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+}
+
+.spiral-ring {
+    width: 6px;
+    height: 8px;
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    border-radius: 50%;
+    box-shadow:
+        inset -1px -1px 2px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 2px 0;
+}
+
+.page-tabs {
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.tab {
+    width: 12px;
+    height: 8px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-light {
+    background: linear-gradient(135deg, #b3d9ff, #87ceeb);
+}
+
+.tab-medium {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+}
+
+.tab-dark {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+.travel-template .template-page-content {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+}
+
+.birthday-template .template-page-content {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+}
+
+.wedding-template .template-page-content {
+    background: linear-gradient(135deg, #fdcb6e, #e17055);
+    color: white;
+}
+
+.baby-template .template-page-content {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    color: white;
+}
+
+.family-template .template-page-content {
+    background: linear-gradient(135deg, #00b894, #00a085);
+    color: white;
+}
+
+.template-info {
+    padding: 1.5rem;
+}
+
+.template-info h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.template-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.select-template-btn {
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.select-template-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+}
+
+/* Floating Toolbar - Canva Style */
+.floating-toolbar {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.floating-toolbar .toolbar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.floating-toolbar .tool-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #666;
+    position: relative;
+}
+
+.floating-toolbar .tool-btn:hover {
+    border-color: #e91e63;
+    color: #e91e63;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+.floating-toolbar .tool-btn[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1001;
+}
+
+.floating-toolbar .tool-btn[title]:hover::before {
+    content: '';
+    position: absolute;
+    right: 55px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: #333;
+    z-index: 1001;
+}
+
+/* Scrapbook Editor Styles */
+.scrapbook-editor {
+    padding: 4rem 0 2rem 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    min-height: calc(100vh - 80px);
+    position: relative;
+}
+
+.scrapbook-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0 2rem;
+}
+
+/* Scrapbook Editor - Spiral Notebook Design */
+.scrapbook-notebook {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: #e8f4fd;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 0.8s ease;
+    overflow: hidden;
+}
+
+.notebook-pages-editor {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.left-page-editor,
+.right-page-editor {
+    flex: 1;
+    background: white;
+    position: relative;
+}
+
+.left-page-editor {
+    border-radius: 15px 0 0 15px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.right-page-editor {
+    border-radius: 0 15px 15px 0;
+    position: relative;
+}
+
+.spiral-binding-editor {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+}
+
+.spiral-ring-editor {
+    width: 8px;
+    height: 10px;
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    border-radius: 50%;
+    box-shadow:
+        inset -1px -1px 3px rgba(0, 0, 0, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 3px 0;
+}
+
+.page-tabs-editor {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tab-editor {
+    width: 16px;
+    height: 10px;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab-light-editor {
+    background: linear-gradient(135deg, #b3d9ff, #87ceeb);
+}
+
+.tab-medium-editor {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+}
+
+.tab-dark-editor {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    position: relative;
+    background: white;
+}
+
+/* Page Navigation */
+.page-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: #c2185b;
+    transform: scale(1.1);
+}
+
+.nav-btn.add-page {
+    background: #4caf50;
+}
+
+.nav-btn.add-page:hover {
+    background: #388e3c;
+}
+
+.page-counter {
+    font-weight: 600;
+    color: #333;
+    padding: 0 1rem;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.close:hover {
+    color: #e91e63;
+}
+
+.modal h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.photo-preview {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    background: #f8f9fa;
+}
+
+.photo-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.text-options {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.text-options label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.text-options input {
+    padding: 0.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 5px;
+}
+
+.sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.sticker-item {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sticker-item:hover {
+    border-color: #e91e63;
+    background: #f8f9fa;
+    transform: scale(1.1);
+}
+
+/* Scrapbook Elements - Improved */
+.scrapbook-element {
+    position: absolute;
+    cursor: move;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.scrapbook-element:hover {
+    border: 1px solid rgba(233, 30, 99, 0.5);
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.2);
+    z-index: 10;
+}
+
+.scrapbook-element.selected {
+    border: 2px solid #e91e63;
+    box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+}
+
+.scrapbook-element.dragging {
+    z-index: 1000;
+    transform: rotate(2deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Handles de Redimensionamiento */
+.resize-handles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.resize-handle {
+    position: absolute;
+    background: #e91e63;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    pointer-events: all;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scrapbook-element.selected .resize-handle {
+    opacity: 1;
+}
+
+.resize-handle:hover {
+    background: #c2185b;
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Posiciones de los handles */
+.resize-handle.nw {
+    top: -6px;
+    left: -6px;
+    cursor: nw-resize;
+}
+
+.resize-handle.ne {
+    top: -6px;
+    right: -6px;
+    cursor: ne-resize;
+}
+
+.resize-handle.sw {
+    bottom: -6px;
+    left: -6px;
+    cursor: sw-resize;
+}
+
+.resize-handle.se {
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+}
+
+.resize-handle.n {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: n-resize;
+}
+
+.resize-handle.s {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: s-resize;
+}
+
+.resize-handle.w {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: w-resize;
+}
+
+.resize-handle.e {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: e-resize;
+}
+
+/* Estados especiales durante redimensionamiento */
+.scrapbook-element.resizing {
+    z-index: 1000;
+    transition: none;
+    box-shadow: 0 0 0 2px #e91e63, 0 8px 25px rgba(233, 30, 99, 0.3);
+}
+
+.scrapbook-element.resizing .resize-handle {
+    opacity: 1;
+    background: #ff4081;
+    transform: scale(1.3);
+}
+
+.scrapbook-element.resizing .resize-handle:hover {
+    background: #ff4081;
+}
+
+/* Indicador de dimensiones */
+.size-indicator {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 1002;
+}
+
+.scrapbook-element.resizing .size-indicator {
+    opacity: 1;
+}
+
+.element-photo {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.element-text {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.element-sticker {
+    font-size: 2rem;
+    user-select: none;
+}
+
+/* Cuadros de Texto Bonitos */
+.text-box-style-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    border: none;
+}
+
+.text-box-style-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+    border: none;
+}
+
+.text-box-style-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+    border: none;
+}
+
+.text-box-style-4 {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(67, 233, 123, 0.3);
+    border: none;
+}
+
+.text-box-style-5 {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(250, 112, 154, 0.3);
+    border: none;
+}
+
+.text-box-style-6 {
+    background: white;
+    color: #333;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ff6b6b;
+}
+
+.text-box-style-7 {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #4ecdc4;
+    backdrop-filter: blur(10px);
+}
+
+.text-box-style-8 {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #8b4513;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(252, 182, 159, 0.3);
+    border: 2px solid #ff8a65;
+}
+
+/* Marcos Decorativos Bonitos */
+.frame-style-1 {
+    border: 4px solid transparent;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) 1;
+    border-radius: 15px;
+    background: transparent;
+    min-width: 150px;
+    min-height: 150px;
+    position: relative;
+}
+
+.frame-style-2 {
+    border: 6px solid #ff6b6b;
+    border-radius: 20px;
+    background: transparent;
+    min-width: 150px;
+    min-height: 150px;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #ff6b6b;
+}
+
+.frame-style-3 {
+    border: 4px dashed #4ecdc4;
+    border-radius: 25px;
+    background: rgba(78, 205, 196, 0.1);
+    min-width: 150px;
+    min-height: 150px;
+    position: relative;
+}
+
+.frame-style-4 {
+    border: 5px dotted #f39c12;
+    border-radius: 50%;
+    background: transparent;
+    min-width: 150px;
+    min-height: 150px;
+    box-shadow: inset 0 0 0 5px rgba(243, 156, 18, 0.2);
+}
+
+.frame-style-5 {
+    border: 3px solid #9b59b6;
+    border-radius: 15px;
+    background: linear-gradient(45deg, transparent 25%, rgba(155, 89, 182, 0.1) 25%, rgba(155, 89, 182, 0.1) 50%, transparent 50%);
+    background-size: 20px 20px;
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.frame-style-6 {
+    border: 4px solid #e74c3c;
+    border-radius: 0;
+    background: transparent;
+    min-width: 150px;
+    min-height: 150px;
+    position: relative;
+    transform: rotate(2deg);
+}
+
+.frame-style-6::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid #c0392b;
+    border-radius: 5px;
+}
+
+.frame-style-7 {
+    border: 6px ridge #2ecc71;
+    border-radius: 30px;
+    background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.frame-style-8 {
+    border: 4px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef) border-box;
+    border-radius: 20px;
+    min-width: 150px;
+    min-height: 150px;
+}
+
+/* Font Selector Modal */
+.font-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.font-option {
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    background: white;
+}
+
+.font-option:hover {
+    border-color: #e91e63;
+    background: rgba(233, 30, 99, 0.05);
+    transform: translateY(-2px);
+}
+
+.font-option.selected {
+    border-color: #e91e63;
+    background: rgba(233, 30, 99, 0.1);
+}
+
+.font-preview {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.font-name {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Color Palette */
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+    border-color: #333;
+}
+
+.color-option.selected {
+    border-color: #333;
+    transform: scale(1.2);
+}
+
+.color-option::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.custom-color-input {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #e9ecef;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
+
+/* Text Formatting Options */
+.text-formatting {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.format-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.format-btn:hover {
+    border-color: #e91e63;
+    color: #e91e63;
+}
+
+.format-btn.active {
+    background: #e91e63;
+    color: white;
+    border-color: #e91e63;
+}
+
+/* Selector de Estilos de Cuadros de Texto */
+.text-box-styles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.text-box-preview {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.text-box-preview:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.text-box-preview.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px #e91e63;
+}
+
+/* Selector de Estilos de Marcos */
+.frame-styles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.frame-style-preview {
+    width: 100px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame-style-preview:hover {
+    transform: scale(1.1);
+}
+
+.frame-style-preview.selected {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px #e91e63;
+}
+
+.frame-preview-content {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Additional improvements */
+.element-text:focus {
+    outline: 2px solid #e91e63;
+    outline-offset: 2px;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.element-text {
+    transition: all 0.3s ease;
+    cursor: text;
+}
+
+.element-text:hover {
+    transform: scale(1.01);
+}
+
+.element-frame:hover {
+    border-color: #c2185b;
+}
+
+.scrapbook-element.selected .element-frame {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+}
+
+/* Modal improvements */
+.modal-content h4 {
+    color: #333;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.text-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #666;
+}
+
+#textSizeValue {
+    background: #e91e63;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Improved button styles */
+.btn-primary {
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .templates-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .floating-toolbar {
+        right: 1rem;
+        padding: 0.5rem;
+    }
+
+    .floating-toolbar .tool-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .scrapbook-notebook {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+    }
+
+    .spiral-ring-editor {
+        width: 6px;
+        height: 8px;
+        margin: 2px 0;
+    }
+
+    .tab-editor {
+        width: 12px;
+        height: 8px;
+    }
+
+    .page-tabs-editor {
+        right: -10px;
+        gap: 3px;
+    }
+
+    .template-categories {
+        gap: 0.5rem;
+    }
+
+    .template-categories .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Responsive spiral notebook design */
+    .spiral-notebook {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .spiral-ring {
+        width: 4px;
+        height: 6px;
+        margin: 1px 0;
+    }
+
+    .tab {
+        width: 10px;
+        height: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scrapbook-notebook {
+        height: 250px;
+    }
+
+    .page-content {
+        padding: 1rem;
+    }
+
+    .spiral-ring-editor {
+        width: 4px;
+        height: 6px;
+        margin: 1px 0;
+    }
+
+    .tab-editor {
+        width: 10px;
+        height: 6px;
+    }
+
+    .page-tabs-editor {
+        right: -8px;
+        gap: 2px;
+    }
+
+    .floating-toolbar {
+        position: fixed;
+        bottom: 2rem;
+        right: 1rem;
+        top: auto;
+        transform: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: calc(100vw - 2rem);
+    }
+
+    .floating-toolbar .toolbar-section {
+        flex-direction: row;
+    }
+
+    /* Mobile spiral notebook adjustments */
+    .spiral-notebook {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .spiral-ring {
+        width: 3px;
+        height: 4px;
+        margin: 0.5px 0;
+    }
+
+    .tab {
+        width: 8px;
+        height: 4px;
+    }
+
+    .page-tabs {
+        right: -6px;
+        gap: 2px;
+    }
+}
+
+/* Ani
+maciones y efectos adicionales */
+@keyframes textBoxAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes frameAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scrapbook-element.element-text {
+    animation: textBoxAppear 0.5s ease;
+}
+
+.scrapbook-element.element-frame {
+    animation: frameAppear 0.4s ease;
+}
+
+/* Mejoras en los modales */
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #e91e63;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #c2185b;
+}
+
+/* Efectos hover mejorados */
+.scrapbook-element:hover {
+    filter: brightness(1.05);
+}
+
+.scrapbook-element.selected {
+    filter: brightness(1.1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(233, 30, 99, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+    }
+}
+
+/* Estilos para elementos de texto más bonitos */
+.text-box-style-1:focus,
+.text-box-style-2:focus,
+.text-box-style-3:focus,
+.text-box-style-4:focus,
+.text-box-style-5:focus,
+.text-box-style-6:focus,
+.text-box-style-7:focus,
+.text-box-style-8:focus {
+    outline: none;
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Tooltips mejorados */
+.floating-toolbar .tool-btn[title]:hover::after {
+    animation: slideInRight 0.3s ease;
+}
+
+/* Responsive para los nuevos elementos */
+@media (max-width: 768px) {
+    .text-box-styles {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .frame-styles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .text-box-preview {
+        font-size: 0.7rem;
+        min-height: 40px;
+    }
+
+    .frame-style-preview {
+        width: 80px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-box-styles {
+        grid-template-columns: 1fr;
+    }
+
+    .frame-styles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 
+Mejoras adicionales para redimensionamiento */
+.scrapbook-element.resizing .element-text {
+    pointer-events: none;
+}
+
+.scrapbook-element.resizing .element-frame {
+    opacity: 0.8;
+}
+
+.scrapbook-element.resizing img {
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Animación suave para los handles */
+@keyframes handleAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scrapbook-element.selected .resize-handle {
+    animation: handleAppear 0.2s ease;
+}
+
+/* Estilos especiales para diferentes tipos de elementos */
+.element-photo .resize-handles {
+    border-radius: 8px;
+}
+
+.element-sticker .resize-handles {
+    border-radius: 50%;
+}
+
+/* Cursor personalizado durante redimensionamiento */
+.scrapbook-element.resizing {
+    user-select: none;
+}
+
+/* Mejora visual para elementos muy pequeños */
+.scrapbook-element[style*="width: 5"]:not([style*="width: 50"]) .resize-handle,
+.scrapbook-element[style*="width: 6"] .resize-handle,
+.scrapbook-element[style*="width: 7"] .resize-handle,
+.scrapbook-element[style*="width: 8"] .resize-handle,
+.scrapbook-element[style*="width: 9"] .resize-handle {
+    width: 8px;
+    height: 8px;
+}
+
+/* Tooltip para el indicador de tamaño */
+.size-indicator::before {
+    content: '📏 ';
+    font-size: 10px;
+}
+
+/* A
+nimación para eliminar elementos */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Mejoras para la experiencia de usuario */
+.scrapbook-element {
+    outline: none;
+}
+
+.scrapbook-element:focus {
+    outline: none;
+}
+
+/* Indicador visual mejorado para elementos seleccionados */
+.scrapbook-element.selected::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #e91e63, #f06292, #e91e63);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.3;
+    animation: selectedGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes selectedGlow {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}

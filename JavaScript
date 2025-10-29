@@ -1,0 +1,567 @@
+// Estado global de la aplicación
+let currentScrapbook = {
+    pages: [{
+        id: 1,
+        elements: []
+    }],
+    currentPageIndex: 0,
+    selectedElement: null
+};
+
+let elementIdCounter = 1;
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+    setupEventListeners();
+    loadSavedScrapbooks();
+});
+
+function initializeApp() {
+    // Mostrar la página de inicio por defecto
+    showSection('inicio');
+    
+    // Configurar navegación
+    setupNavigation();
+    
+    // Configurar modales
+    setupModals();
+    
+    // Configurar drag and drop
+    setupDragAndDrop();
+}
+
+function setupEventListeners() {
+    // Navegación del header
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.getAttribute('href').substring(1);
+            showSection(section);
+            updateActiveNavLink(this);
+        });
+    });
+    
+    // Botones de herramientas
+    document.querySelectorAll('.tool-btn[data-tool]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tool = this.getAttribute('data-tool');
+            openToolModal(tool);
+        });
+    });
+    
+    // Formulario de contacto
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showNotification('¡Mensaje enviado! Te contactaremos pronto.', 'success');
+        this.reset();
+    });
+}
+
+function setupNavigation() {
+    // Navegación entre páginas del scrapbook
+    window.previousPage = function() {
+        if (currentScrapbook.currentPageIndex > 0) {
+            currentScrapbook.currentPageIndex--;
+            updatePageDisplay();
+        }
+    };
+    
+    window.nextPage = function() {
+        if (currentScrapbook.currentPageIndex < currentScrapbook.pages.length - 1) {
+            currentScrapbook.currentPageIndex++;
+            updatePageDisplay();
+        }
+    };
+    
+    window.addNewPage = function() {
+        const newPage = {
+            id: currentScrapbook.pages.length + 1,
+            elements: []
+        };
+        currentScrapbook.pages.push(newPage);
+        currentScrapbook.currentPageIndex = currentScrapbook.pages.length - 1;
+        updatePageDisplay();
+        showNotification('Nueva página añadida', 'success');
+    };
+}
+
+function setupModals() {
+    // Cerrar modales al hacer clic en X
+    document.querySelectorAll('.close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            this.closest('.modal').style.display = 'none';
+        });
+    });
+    
+    // Cerrar modales al hacer clic fuera
+    window.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+        }
+    });
+}
+
+function setupDragAndDrop() {
+    const pageContent = document.getElementById('pageContent');
+    
+    // Permitir drop en la página
+    pageContent.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = 'rgba(233, 30, 99, 0.1)';
+    });
+    
+    pageContent.addEventListener('dragleave', function(e) {
+        this.style.backgroundColor = '';
+    });
+    
+    pageContent.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = '';
+        
+        const elementData = e.dataTransfer.getData('text/plain');
+        if (elementData) {
+            const data = JSON.parse(elementData);
+            addElementToPage(data.type, data.content, e.offsetX, e.offsetY);
+        }
+    });
+}
+
+// Funciones de navegación entre secciones
+function showSection(sectionName) {
+    // Ocultar todas las secciones
+    document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Mostrar la sección seleccionada
+    const targetSection = document.getElementById(sectionName);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+        
+        // Animación especial para el editor
+        if (sectionName === 'crear') {
+            setTimeout(() => {
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
+            }, 100);
+        }
+    }
+}
+
+function updateActiveNavLink(activeLink) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    activeLink.classList.add('active');
+}
+
+// Funciones del editor de scrapbook
+function showScrapbookEditor() {
+    showSection('crear');
+    updateActiveNavLink(document.querySelector('[href="#crear"]'));
+}
+
+function updatePageDisplay() {
+    const currentPage = currentScrapbook.pages[currentScrapbook.currentPageIndex];
+    const pageContent = document.getElementById('pageContent');
+    const currentPageNum = document.getElementById('currentPageNum');
+    const totalPages = document.getElementById('totalPages');
+    
+    // Actualizar contador de páginas
+    currentPageNum.textContent = currentScrapbook.currentPageIndex + 1;
+    totalPages.textContent = currentScrapbook.pages.length;
+    
+    // Limpiar contenido actual
+    pageContent.innerHTML = '';
+    
+    // Añadir elementos de la página actual
+    currentPage.elements.forEach(element => {
+        createElementOnPage(element);
+    });
+}
+
+function createElementOnPage(elementData) {
+    const pageContent = document.getElementById('pageContent');
+    const element = document.createElement('div');
+    
+    element.className = `scrapbook-element element-${elementData.type}`;
+    element.id = `element-${elementData.id}`;
+    element.style.left = elementData.x + 'px';
+    element.style.top = elementData.y + 'px';
+    element.style.position = 'absolute';
+    
+    switch (elementData.type) {
+        case 'photo':
+            element.innerHTML = `<img src="${elementData.content}" alt="Foto" style="max-width: 200px; max-height: 200px; border-radius: 10px;">`;
+            break;
+        case 'text':
+            element.innerHTML = `<textarea class="element-text" style="width: ${elementData.width}px; height: ${elementData.height}px; font-size: ${elementData.fontSize}px; color: ${elementData.color};">${elementData.content}</textarea>`;
+            break;
+        case 'sticker':
+            element.innerHTML = `<div class="element-sticker">${elementData.content}</div>`;
+            break;
+        case 'frame':
+            element.innerHTML = `<div class="element-frame" style="width: ${elementData.width}px; height: ${elementData.height}px;"></div>`;
+            break;
+    }
+    
+    // Hacer elemento draggable
+    makeElementDraggable(element, elementData.id);
+    
+    // Hacer elemento seleccionable
+    element.addEventListener('click', function(e) {
+        e.stopPropagation();
+        selectElement(elementData.id);
+    });
+    
+    pageContent.appendChild(element);
+}
+
+function makeElementDraggable(element, elementId) {
+    let isDragging = false;
+    let startX, startY, initialX, initialY;
+    
+    element.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        const rect = element.getBoundingClientRect();
+        initialX = rect.left;
+        initialY = rect.top;
+        
+        element.style.zIndex = '1000';
+        document.body.style.cursor = 'grabbing';
+        
+        e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+        
+        element.style.left = (initialX + deltaX) + 'px';
+        element.style.top = (initialY + deltaY) + 'px';
+    });
+    
+    document.addEventListener('mouseup', function() {
+        if (isDragging) {
+            isDragging = false;
+            element.style.zIndex = '';
+            document.body.style.cursor = '';
+            
+            // Actualizar posición en el estado
+            updateElementPosition(elementId, element.offsetLeft, element.offsetTop);
+        }
+    });
+}
+
+function selectElement(elementId) {
+    // Deseleccionar elemento anterior
+    if (currentScrapbook.selectedElement) {
+        const prevElement = document.getElementById(`element-${currentScrapbook.selectedElement}`);
+        if (prevElement) {
+            prevElement.classList.remove('selected');
+        }
+    }
+    
+    // Seleccionar nuevo elemento
+    currentScrapbook.selectedElement = elementId;
+    const element = document.getElementById(`element-${elementId}`);
+    if (element) {
+        element.classList.add('selected');
+    }
+}
+
+function updateElementPosition(elementId, x, y) {
+    const page = currentScrapbook.pages[currentScrapbook.currentPageIndex];
+    const element = page.elements.find(el => el.id === elementId);
+    if (element) {
+        element.x = x;
+        element.y = y;
+    }
+}
+
+// Funciones de herramientas
+function openToolModal(tool) {
+    const modalId = tool + 'Modal';
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+// Funciones para añadir elementos
+window.addPhotoToPage = function() {
+    const fileInput = document.getElementById('photoInput');
+    const file = fileInput.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            addElementToPage('photo', e.target.result, 100, 100);
+            document.getElementById('photoModal').style.display = 'none';
+            showNotification('Foto añadida al scrapbook', 'success');
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+window.addTextToPage = function() {
+    const text = document.getElementById('textInput').value;
+    const color = document.getElementById('textColor').value;
+    const size = document.getElementById('textSize').value;
+    
+    if (text.trim()) {
+        addElementToPage('text', text, 150, 150, {
+            color: color,
+            fontSize: size,
+            width: 200,
+            height: 50
+        });
+        document.getElementById('textModal').style.display = 'none';
+        showNotification('Texto añadido al scrapbook', 'success');
+    }
+};
+
+window.addStickerToPage = function(sticker) {
+    addElementToPage('sticker', sticker, 200, 200);
+    document.getElementById('stickerModal').style.display = 'none';
+    showNotification('Sticker añadido al scrapbook', 'success');
+};
+
+function addElementToPage(type, content, x, y, options = {}) {
+    const element = {
+        id: elementIdCounter++,
+        type: type,
+        content: content,
+        x: x,
+        y: y,
+        ...options
+    };
+    
+    const currentPage = currentScrapbook.pages[currentScrapbook.currentPageIndex];
+    currentPage.elements.push(element);
+    
+    createElementOnPage(element);
+}
+
+// Configurar stickers
+document.querySelectorAll('.sticker-item').forEach(sticker => {
+    sticker.addEventListener('click', function() {
+        const stickerContent = this.getAttribute('data-sticker');
+        addStickerToPage(stickerContent);
+    });
+});
+
+// Funciones de guardar, descargar y compartir
+window.saveScrapbook = function() {
+    const scrapbookData = JSON.stringify(currentScrapbook);
+    localStorage.setItem('scrapbook_' + Date.now(), scrapbookData);
+    showNotification('Scrapbook guardado exitosamente', 'success');
+    loadSavedScrapbooks();
+};
+
+window.downloadScrapbook = function() {
+    // Crear un canvas para renderizar el scrapbook
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 600;
+    canvas.height = 400;
+    
+    // Fondo blanco
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Renderizar elementos
+    const currentPage = currentScrapbook.pages[currentScrapbook.currentPageIndex];
+    currentPage.elements.forEach(element => {
+        switch (element.type) {
+            case 'text':
+                ctx.fillStyle = element.color || '#333333';
+                ctx.font = `${element.fontSize || 16}px Arial`;
+                ctx.fillText(element.content, element.x, element.y + 20);
+                break;
+            case 'sticker':
+                ctx.font = '30px Arial';
+                ctx.fillText(element.content, element.x, element.y + 30);
+                break;
+        }
+    });
+    
+    // Descargar imagen
+    const link = document.createElement('a');
+    link.download = 'mi-scrapbook.png';
+    link.href = canvas.toDataURL();
+    link.click();
+    
+    showNotification('Scrapbook descargado', 'success');
+};
+
+window.shareScrapbook = function() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mi Scrapbook Digital',
+            text: '¡Mira el scrapbook que creé!',
+            url: window.location.href
+        });
+    } else {
+        // Fallback: copiar URL al portapapeles
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showNotification('URL copiada al portapapeles', 'success');
+        });
+    }
+};
+
+// Funciones de galería
+function loadSavedScrapbooks() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('scrapbook_')) {
+            const scrapbookData = JSON.parse(localStorage.getItem(key));
+            const galleryItem = createGalleryItem(scrapbookData, key);
+            galleryGrid.appendChild(galleryItem);
+        }
+    }
+}
+
+function createGalleryItem(scrapbookData, key) {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    
+    const preview = document.createElement('div');
+    preview.className = 'gallery-preview';
+    preview.style.height = '200px';
+    preview.style.background = 'linear-gradient(135deg, #f8f9fa, #e9ecef)';
+    preview.style.display = 'flex';
+    preview.style.alignItems = 'center';
+    preview.style.justifyContent = 'center';
+    preview.style.fontSize = '3rem';
+    preview.innerHTML = '📖';
+    
+    const info = document.createElement('div');
+    info.style.padding = '1rem';
+    info.innerHTML = `
+        <h4>Scrapbook ${scrapbookData.pages.length} páginas</h4>
+        <p>Creado: ${new Date(parseInt(key.split('_')[1])).toLocaleDateString()}</p>
+        <button class="btn-primary" onclick="loadScrapbook('${key}')">Abrir</button>
+    `;
+    
+    item.appendChild(preview);
+    item.appendChild(info);
+    
+    return item;
+}
+
+window.loadScrapbook = function(key) {
+    const scrapbookData = JSON.parse(localStorage.getItem(key));
+    currentScrapbook = scrapbookData;
+    currentScrapbook.currentPageIndex = 0;
+    showScrapbookEditor();
+    updatePageDisplay();
+    showNotification('Scrapbook cargado', 'success');
+};
+
+// Sistema de notificaciones
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#4caf50' : type === 'error' ? '#f44336' : '#2196f3'};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 3000;
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// Animaciones CSS adicionales
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .scrapbook-editor {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+    }
+    
+    .scrapbook-editor[style*="block"] {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+document.head.appendChild(style);
+
+// Funciones adicionales para decoración
+window.addFrameToPage = function() {
+    addElementToPage('frame', '', 100, 100, {
+        width: 300,
+        height: 200
+    });
+    showNotification('Marco añadido al scrapbook', 'success');
+};
+
+window.addBackgroundToPage = function() {
+    const backgrounds = [
+        'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+        'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
+        'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)'
+    ];
+    
+    const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    const pageContent = document.getElementById('pageContent');
+    pageContent.style.background = randomBackground;
+    
+    showNotification('Fondo decorativo aplicado', 'success');
+};
+
+// Configurar botones de decoración
+document.querySelector('[data-tool="frame"]').addEventListener('click', addFrameToPage);
+document.querySelector('[data-tool="background"]').addEventListener('click', addBackgroundToPage);
+
+// Inicializar la aplicación
+console.log('Scrapbook Digital inicializado correctamente');

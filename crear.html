@@ -58,13 +58,26 @@
                 <div class="template-card" data-template="blank" data-category="blank">
                     <div class="template-preview">
                         <div class="template-preview-content">
-                            <div class="template-book">
-                                <div class="template-book-spine"></div>
-                                <div class="template-book-page">
-                                    <div class="template-page-content">
-                                        <i class="fas fa-file-alt"></i>
-                                        <span>En Blanco</span>
+                            <div class="spiral-notebook">
+                                <div class="notebook-pages">
+                                    <div class="left-page"></div>
+                                    <div class="right-page">
+                                        <div class="page-tabs">
+                                            <div class="tab tab-light"></div>
+                                            <div class="tab tab-medium"></div>
+                                            <div class="tab tab-dark"></div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="spiral-binding">
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
+                                    <div class="spiral-ring"></div>
                                 </div>
                             </div>
                         </div>
@@ -242,12 +255,31 @@
 
         <!-- Scrapbook Canvas -->
         <div class="scrapbook-container">
-            <div class="scrapbook-book" id="scrapbookBook">
-                <div class="book-spine"></div>
-                <div class="book-page active-page" id="currentPage">
-                    <div class="page-content" id="pageContent">
-                        <!-- Los elementos del scrapbook se añadirán aquí -->
+            <div class="scrapbook-notebook" id="scrapbookBook">
+                <div class="notebook-pages-editor">
+                    <div class="left-page-editor"></div>
+                    <div class="right-page-editor active-page" id="currentPage">
+                        <div class="page-content" id="pageContent">
+                            <!-- Los elementos del scrapbook se añadirán aquí -->
+                        </div>
                     </div>
+                </div>
+                <div class="spiral-binding-editor">
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                    <div class="spiral-ring-editor"></div>
+                </div>
+                <div class="page-tabs-editor">
+                    <div class="tab-editor tab-light-editor"></div>
+                    <div class="tab-editor tab-medium-editor"></div>
+                    <div class="tab-editor tab-dark-editor"></div>
                 </div>
             </div>
             
@@ -285,12 +317,113 @@
             <span class="close">&times;</span>
             <h3>Añadir Texto</h3>
             <textarea id="textInput" placeholder="Escribe tu texto aquí..."></textarea>
+            
+            <!-- Font Selector -->
+            <h4>Seleccionar Fuente</h4>
+            <div class="font-selector">
+                <div class="font-option" data-font="Arial, sans-serif">
+                    <div class="font-preview" style="font-family: Arial, sans-serif;">Texto de ejemplo</div>
+                    <div class="font-name">Arial</div>
+                </div>
+                <div class="font-option" data-font="'Times New Roman', serif">
+                    <div class="font-preview" style="font-family: 'Times New Roman', serif;">Texto de ejemplo</div>
+                    <div class="font-name">Times New Roman</div>
+                </div>
+                <div class="font-option" data-font="'Courier New', monospace">
+                    <div class="font-preview" style="font-family: 'Courier New', monospace;">Texto de ejemplo</div>
+                    <div class="font-name">Courier New</div>
+                </div>
+                <div class="font-option" data-font="'Comic Sans MS', cursive">
+                    <div class="font-preview" style="font-family: 'Comic Sans MS', cursive;">Texto de ejemplo</div>
+                    <div class="font-name">Comic Sans MS</div>
+                </div>
+                <div class="font-option" data-font="'Impact', sans-serif">
+                    <div class="font-preview" style="font-family: 'Impact', sans-serif;">Texto de ejemplo</div>
+                    <div class="font-name">Impact</div>
+                </div>
+                <div class="font-option" data-font="'Brush Script MT', cursive">
+                    <div class="font-preview" style="font-family: 'Brush Script MT', cursive;">Texto de ejemplo</div>
+                    <div class="font-name">Brush Script</div>
+                </div>
+            </div>
+            
+            <!-- Text Formatting -->
+            <h4>Formato</h4>
+            <div class="text-formatting">
+                <button class="format-btn" data-format="bold" title="Negrita">
+                    <i class="fas fa-bold"></i>
+                </button>
+                <button class="format-btn" data-format="italic" title="Cursiva">
+                    <i class="fas fa-italic"></i>
+                </button>
+                <button class="format-btn" data-format="underline" title="Subrayado">
+                    <i class="fas fa-underline"></i>
+                </button>
+                <button class="format-btn" data-format="left" title="Alinear izquierda">
+                    <i class="fas fa-align-left"></i>
+                </button>
+                <button class="format-btn" data-format="center" title="Centrar">
+                    <i class="fas fa-align-center"></i>
+                </button>
+                <button class="format-btn" data-format="right" title="Alinear derecha">
+                    <i class="fas fa-align-right"></i>
+                </button>
+            </div>
+            
+            <!-- Estilos de Cuadros de Texto -->
+            <h4>🎨 Estilos de Cuadro</h4>
+            <div class="text-box-styles">
+                <div class="text-box-preview text-box-style-1" data-style="1">
+                    <span>Estilo Morado</span>
+                </div>
+                <div class="text-box-preview text-box-style-2" data-style="2">
+                    <span>Estilo Rosa</span>
+                </div>
+                <div class="text-box-preview text-box-style-3" data-style="3">
+                    <span>Estilo Azul</span>
+                </div>
+                <div class="text-box-preview text-box-style-4" data-style="4">
+                    <span>Estilo Verde</span>
+                </div>
+                <div class="text-box-preview text-box-style-5" data-style="5">
+                    <span>Estilo Coral</span>
+                </div>
+                <div class="text-box-preview text-box-style-6" data-style="6">
+                    <span>Estilo Blanco</span>
+                </div>
+                <div class="text-box-preview text-box-style-7" data-style="7">
+                    <span>Estilo Cristal</span>
+                </div>
+                <div class="text-box-preview text-box-style-8" data-style="8">
+                    <span>Estilo Durazno</span>
+                </div>
+            </div>
+
+            <!-- Color Palette (Solo para estilo personalizado) -->
+            <h4>🎨 Color Personalizado</h4>
+            <div class="color-palette">
+                <div class="color-option" data-color="#000000" style="background: #000000;"></div>
+                <div class="color-option" data-color="#ffffff" style="background: #ffffff; border: 2px solid #ddd;"></div>
+                <div class="color-option" data-color="#e91e63" style="background: #e91e63;"></div>
+                <div class="color-option" data-color="#9c27b0" style="background: #9c27b0;"></div>
+                <div class="color-option" data-color="#3f51b5" style="background: #3f51b5;"></div>
+                <div class="color-option" data-color="#2196f3" style="background: #2196f3;"></div>
+                <div class="color-option" data-color="#00bcd4" style="background: #00bcd4;"></div>
+                <div class="color-option" data-color="#4caf50" style="background: #4caf50;"></div>
+                <div class="color-option" data-color="#8bc34a" style="background: #8bc34a;"></div>
+                <div class="color-option" data-color="#cddc39" style="background: #cddc39;"></div>
+                <div class="color-option" data-color="#ffeb3b" style="background: #ffeb3b;"></div>
+                <div class="color-option" data-color="#ffc107" style="background: #ffc107;"></div>
+                <div class="color-option" data-color="#ff9800" style="background: #ff9800;"></div>
+                <div class="color-option" data-color="#ff5722" style="background: #ff5722;"></div>
+                <div class="color-option" data-color="#795548" style="background: #795548;"></div>
+                <input type="color" class="custom-color-input" id="customColorPicker" title="Color personalizado">
+            </div>
+            
             <div class="text-options">
-                <label>Color:
-                    <input type="color" id="textColor" value="#333333">
-                </label>
                 <label>Tamaño:
                     <input type="range" id="textSize" min="12" max="48" value="16">
+                    <span id="textSizeValue">16px</span>
                 </label>
             </div>
             <button class="btn-primary" onclick="addTextToPage()">Añadir a la Página</button>
@@ -311,6 +444,77 @@
                 <div class="sticker-item" data-sticker="🎁">🎁</div>
                 <div class="sticker-item" data-sticker="✨">✨</div>
             </div>
+        </div>
+    </div>
+
+    <div id="backgroundModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Personalizar Fondo</h3>
+            
+            <!-- Colores sólidos -->
+            <h4>Colores Sólidos</h4>
+            <div class="color-palette">
+                <div class="color-option" data-bg="solid" data-color="#ffffff" style="background: #ffffff; border: 2px solid #ddd;"></div>
+                <div class="color-option" data-bg="solid" data-color="#f8f9fa" style="background: #f8f9fa;"></div>
+                <div class="color-option" data-bg="solid" data-color="#e3f2fd" style="background: #e3f2fd;"></div>
+                <div class="color-option" data-bg="solid" data-color="#fce4ec" style="background: #fce4ec;"></div>
+                <div class="color-option" data-bg="solid" data-color="#f3e5f5" style="background: #f3e5f5;"></div>
+                <div class="color-option" data-bg="solid" data-color="#e8f5e8" style="background: #e8f5e8;"></div>
+                <div class="color-option" data-bg="solid" data-color="#fff3e0" style="background: #fff3e0;"></div>
+                <div class="color-option" data-bg="solid" data-color="#ffebee" style="background: #ffebee;"></div>
+            </div>
+            
+            <!-- Gradientes -->
+            <h4>Gradientes</h4>
+            <div class="color-palette">
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%)" style="background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)" style="background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <div class="color-option" data-bg="gradient" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+            </div>
+            
+            <button class="btn-primary" onclick="closeModal('backgroundModal')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="frameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>🖼️ Seleccionar Marco Decorativo</h3>
+            
+            <div class="frame-styles-grid">
+                <div class="frame-style-preview frame-style-1" data-frame="1">
+                    <div class="frame-preview-content">Gradiente</div>
+                </div>
+                <div class="frame-style-preview frame-style-2" data-frame="2">
+                    <div class="frame-preview-content">Doble Borde</div>
+                </div>
+                <div class="frame-style-preview frame-style-3" data-frame="3">
+                    <div class="frame-preview-content">Punteado</div>
+                </div>
+                <div class="frame-style-preview frame-style-4" data-frame="4">
+                    <div class="frame-preview-content">Circular</div>
+                </div>
+                <div class="frame-style-preview frame-style-5" data-frame="5">
+                    <div class="frame-preview-content">Cuadros</div>
+                </div>
+                <div class="frame-style-preview frame-style-6" data-frame="6">
+                    <div class="frame-preview-content">Inclinado</div>
+                </div>
+                <div class="frame-style-preview frame-style-7" data-frame="7">
+                    <div class="frame-preview-content">Relieve</div>
+                </div>
+                <div class="frame-style-preview frame-style-8" data-frame="8">
+                    <div class="frame-preview-content">Degradado</div>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="closeModal('frameModal')">Cerrar</button>
         </div>
     </div>
 
@@ -470,22 +674,61 @@
             }
         };
         
+        // Variables globales para el texto
+        let selectedFont = 'Arial, sans-serif';
+        let selectedColor = '#333333';
+        let selectedTextBoxStyle = null; // Para estilos predefinidos
+        let selectedFrameStyle = 1; // Estilo de marco por defecto
+        let textFormatting = {
+            bold: false,
+            italic: false,
+            underline: false,
+            align: 'left'
+        };
+
         window.addTextToPage = function() {
             const text = document.getElementById('textInput').value;
-            const color = document.getElementById('textColor').value;
             const size = document.getElementById('textSize').value;
             
             if (text.trim()) {
                 addElementToPage('text', text, 150, 150, {
-                    color: color,
+                    color: selectedTextBoxStyle ? null : selectedColor, // null si usa estilo predefinido
                     fontSize: size,
+                    fontFamily: selectedFont,
+                    formatting: {...textFormatting},
+                    textBoxStyle: selectedTextBoxStyle,
                     width: 200,
-                    height: 50
+                    height: 60
                 });
                 document.getElementById('textModal').style.display = 'none';
-                showNotification('Texto añadido al scrapbook', 'success');
+                
+                // Reset form
+                document.getElementById('textInput').value = '';
+                resetTextOptions();
+                
+                showNotification('✨ Cuadro de texto añadido', 'success');
             }
         };
+        
+        function resetTextOptions() {
+            selectedFont = 'Arial, sans-serif';
+            selectedColor = '#333333';
+            selectedTextBoxStyle = null;
+            textFormatting = {
+                bold: false,
+                italic: false,
+                underline: false,
+                align: 'left'
+            };
+            
+            // Reset UI
+            document.querySelectorAll('.font-option.selected').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.color-option.selected').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.text-box-preview.selected').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.format-btn.active').forEach(el => el.classList.remove('active'));
+            document.getElementById('textSize').value = 16;
+            document.getElementById('textSizeValue').textContent = '16px';
+        }
         
         window.addStickerToPage = function(sticker) {
             addElementToPage('sticker', sticker, 200, 200);
@@ -518,21 +761,82 @@
             
             switch (elementData.type) {
                 case 'photo':
-                    element.innerHTML = `<img src="${elementData.content}" alt="Foto" style="max-width: 200px; max-height: 200px; border-radius: 10px;">`;
+                    const img = document.createElement('img');
+                    img.src = elementData.content;
+                    img.alt = 'Foto';
+                    img.style.cssText = 'max-width: 200px; max-height: 200px; border-radius: 8px; display: block;';
+                    element.appendChild(img);
                     break;
+                    
                 case 'text':
-                    element.innerHTML = `<textarea class="element-text" style="width: ${elementData.width}px; height: ${elementData.height}px; font-size: ${elementData.fontSize}px; color: ${elementData.color};">${elementData.content}</textarea>`;
+                    const textArea = document.createElement('div');
+                    textArea.className = 'element-text';
+                    textArea.contentEditable = true;
+                    textArea.textContent = elementData.content;
+                    
+                    // Si tiene estilo predefinido, aplicarlo
+                    if (elementData.textBoxStyle) {
+                        textArea.className += ` text-box-style-${elementData.textBoxStyle}`;
+                        textArea.style.cssText = `
+                            width: ${elementData.width}px; 
+                            min-height: ${elementData.height}px; 
+                            font-size: ${elementData.fontSize}px; 
+                            font-family: ${elementData.fontFamily || 'Arial, sans-serif'};
+                            outline: none;
+                            resize: none;
+                            overflow: hidden;
+                        `;
+                    } else {
+                        // Estilo personalizado
+                        let textStyle = `
+                            width: ${elementData.width}px; 
+                            min-height: ${elementData.height}px; 
+                            font-size: ${elementData.fontSize}px; 
+                            color: ${elementData.color || '#333'};
+                            font-family: ${elementData.fontFamily || 'Arial, sans-serif'};
+                            padding: 15px;
+                            border: none;
+                            outline: none;
+                            background: rgba(255, 255, 255, 0.95);
+                            border-radius: 10px;
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                            resize: none;
+                            overflow: hidden;
+                        `;
+                        textArea.style.cssText = textStyle;
+                    }
+                    
+                    if (elementData.formatting) {
+                        if (elementData.formatting.bold) textArea.style.fontWeight = 'bold';
+                        if (elementData.formatting.italic) textArea.style.fontStyle = 'italic';
+                        if (elementData.formatting.underline) textArea.style.textDecoration = 'underline';
+                        textArea.style.textAlign = elementData.formatting.align;
+                    }
+                    
+                    element.appendChild(textArea);
                     break;
+                    
                 case 'sticker':
-                    element.innerHTML = `<div class="element-sticker">${elementData.content}</div>`;
+                    const sticker = document.createElement('div');
+                    sticker.className = 'element-sticker';
+                    sticker.textContent = elementData.content;
+                    element.appendChild(sticker);
                     break;
+                    
                 case 'frame':
-                    element.innerHTML = `<div class="element-frame" style="width: ${elementData.width}px; height: ${elementData.height}px;"></div>`;
+                    const frame = document.createElement('div');
+                    frame.className = `element-frame frame-style-${elementData.frameStyle || 1}`;
+                    frame.style.cssText = `width: ${elementData.width}px; height: ${elementData.height}px;`;
+                    element.appendChild(frame);
                     break;
             }
             
-            // Make element draggable
+            // Añadir handles de redimensionamiento
+            addResizeHandles(element);
+            
+            // Make element draggable and resizable
             makeElementDraggable(element, elementData.id);
+            makeElementResizable(element, elementData.id);
             
             pageContent.appendChild(element);
         }
@@ -542,18 +846,39 @@
             let startX, startY, initialX, initialY;
             
             element.addEventListener('mousedown', function(e) {
+                // No iniciar arrastre si se está clickeando un handle de redimensionamiento
+                if (e.target.classList.contains('resize-handle')) {
+                    return;
+                }
+                
+                // Deseleccionar otros elementos
+                document.querySelectorAll('.scrapbook-element.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                
+                // Seleccionar este elemento
+                element.classList.add('selected');
+                
+                // Mostrar información del elemento (solo la primera vez)
+                if (!element.hasAttribute('data-info-shown')) {
+                    setTimeout(() => showElementInfo(element), 100);
+                    element.setAttribute('data-info-shown', 'true');
+                }
+                
                 isDragging = true;
                 startX = e.clientX;
                 startY = e.clientY;
                 
                 const rect = element.getBoundingClientRect();
-                initialX = rect.left;
-                initialY = rect.top;
+                const pageRect = document.getElementById('pageContent').getBoundingClientRect();
+                initialX = rect.left - pageRect.left;
+                initialY = rect.top - pageRect.top;
                 
-                element.style.zIndex = '1000';
+                element.classList.add('dragging');
                 document.body.style.cursor = 'grabbing';
                 
                 e.preventDefault();
+                e.stopPropagation();
             });
             
             document.addEventListener('mousemove', function(e) {
@@ -562,26 +887,262 @@
                 const deltaX = e.clientX - startX;
                 const deltaY = e.clientY - startY;
                 
-                element.style.left = (initialX + deltaX) + 'px';
-                element.style.top = (initialY + deltaY) + 'px';
+                const newX = initialX + deltaX;
+                const newY = initialY + deltaY;
+                
+                // Limitar el movimiento dentro del área de la página
+                const pageContent = document.getElementById('pageContent');
+                const pageRect = pageContent.getBoundingClientRect();
+                const elementRect = element.getBoundingClientRect();
+                
+                const maxX = pageRect.width - elementRect.width;
+                const maxY = pageRect.height - elementRect.height;
+                
+                const constrainedX = Math.max(0, Math.min(newX, maxX));
+                const constrainedY = Math.max(0, Math.min(newY, maxY));
+                
+                element.style.left = constrainedX + 'px';
+                element.style.top = constrainedY + 'px';
             });
             
             document.addEventListener('mouseup', function() {
                 if (isDragging) {
                     isDragging = false;
-                    element.style.zIndex = '';
+                    element.classList.remove('dragging');
                     document.body.style.cursor = '';
                 }
             });
+            
+            // Doble clic para editar
+            element.addEventListener('dblclick', function(e) {
+                if (element.classList.contains('element-text')) {
+                    editTextElement(element);
+                } else if (element.classList.contains('element-frame')) {
+                    editFrameElement(element);
+                }
+                e.stopPropagation();
+            });
+            
+            // Tecla Delete para eliminar elemento
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Delete' && element.classList.contains('selected')) {
+                    element.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        element.remove();
+                        showNotification('🗑️ Elemento eliminado', 'info');
+                    }, 300);
+                }
+            });
+            
+            // Click derecho para menú contextual rápido
+            element.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                if (element.classList.contains('selected')) {
+                    const confirmDelete = confirm('¿Quieres eliminar este elemento?');
+                    if (confirmDelete) {
+                        element.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            element.remove();
+                            showNotification('🗑️ Elemento eliminado', 'info');
+                        }, 300);
+                    }
+                }
+            });
+            
+            // Hacer el elemento focusable para recibir eventos de teclado
+            element.setAttribute('tabindex', '0');
+        }
+        
+        // Función para añadir handles de redimensionamiento
+        function addResizeHandles(element) {
+            const handlesContainer = document.createElement('div');
+            handlesContainer.className = 'resize-handles';
+            
+            // Crear los 8 handles (esquinas y lados)
+            const handlePositions = ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'];
+            
+            handlePositions.forEach(position => {
+                const handle = document.createElement('div');
+                handle.className = `resize-handle ${position}`;
+                handle.setAttribute('data-position', position);
+                handlesContainer.appendChild(handle);
+            });
+            
+            // Añadir indicador de tamaño
+            const sizeIndicator = document.createElement('div');
+            sizeIndicator.className = 'size-indicator';
+            handlesContainer.appendChild(sizeIndicator);
+            
+            element.appendChild(handlesContainer);
+        }
+        
+        // Función para hacer elementos redimensionables
+        function makeElementResizable(element, elementId) {
+            const handles = element.querySelectorAll('.resize-handle');
+            const sizeIndicator = element.querySelector('.size-indicator');
+            let isResizing = false;
+            let startX, startY, startWidth, startHeight, startLeft, startTop;
+            let currentHandle = null;
+            
+            handles.forEach(handle => {
+                handle.addEventListener('mousedown', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    isResizing = true;
+                    currentHandle = this.getAttribute('data-position');
+                    
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    
+                    const rect = element.getBoundingClientRect();
+                    const pageRect = document.getElementById('pageContent').getBoundingClientRect();
+                    
+                    startWidth = rect.width;
+                    startHeight = rect.height;
+                    startLeft = rect.left - pageRect.left;
+                    startTop = rect.top - pageRect.top;
+                    
+                    element.classList.add('resizing');
+                    document.body.style.cursor = this.style.cursor;
+                    
+                    updateSizeIndicator(startWidth, startHeight);
+                });
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isResizing) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                let newWidth = startWidth;
+                let newHeight = startHeight;
+                let newLeft = startLeft;
+                let newTop = startTop;
+                
+                // Calcular nuevas dimensiones según el handle
+                switch (currentHandle) {
+                    case 'se': // Esquina inferior derecha
+                        newWidth = Math.max(50, startWidth + deltaX);
+                        newHeight = Math.max(30, startHeight + deltaY);
+                        break;
+                    case 'sw': // Esquina inferior izquierda
+                        newWidth = Math.max(50, startWidth - deltaX);
+                        newHeight = Math.max(30, startHeight + deltaY);
+                        newLeft = startLeft + (startWidth - newWidth);
+                        break;
+                    case 'ne': // Esquina superior derecha
+                        newWidth = Math.max(50, startWidth + deltaX);
+                        newHeight = Math.max(30, startHeight - deltaY);
+                        newTop = startTop + (startHeight - newHeight);
+                        break;
+                    case 'nw': // Esquina superior izquierda
+                        newWidth = Math.max(50, startWidth - deltaX);
+                        newHeight = Math.max(30, startHeight - deltaY);
+                        newLeft = startLeft + (startWidth - newWidth);
+                        newTop = startTop + (startHeight - newHeight);
+                        break;
+                    case 'e': // Lado derecho
+                        newWidth = Math.max(50, startWidth + deltaX);
+                        break;
+                    case 'w': // Lado izquierdo
+                        newWidth = Math.max(50, startWidth - deltaX);
+                        newLeft = startLeft + (startWidth - newWidth);
+                        break;
+                    case 's': // Lado inferior
+                        newHeight = Math.max(30, startHeight + deltaY);
+                        break;
+                    case 'n': // Lado superior
+                        newHeight = Math.max(30, startHeight - deltaY);
+                        newTop = startTop + (startHeight - newHeight);
+                        break;
+                }
+                
+                // Aplicar las nuevas dimensiones
+                element.style.width = newWidth + 'px';
+                element.style.height = newHeight + 'px';
+                element.style.left = newLeft + 'px';
+                element.style.top = newTop + 'px';
+                
+                // Actualizar el contenido del elemento
+                updateElementContent(element, newWidth, newHeight);
+                
+                // Actualizar indicador de tamaño
+                updateSizeIndicator(newWidth, newHeight);
+            });
+            
+            document.addEventListener('mouseup', function() {
+                if (isResizing) {
+                    isResizing = false;
+                    currentHandle = null;
+                    element.classList.remove('resizing');
+                    document.body.style.cursor = '';
+                    sizeIndicator.style.opacity = '0';
+                }
+            });
+            
+            function updateSizeIndicator(width, height) {
+                sizeIndicator.textContent = `${Math.round(width)} × ${Math.round(height)}`;
+                sizeIndicator.style.opacity = '1';
+            }
+        }
+        
+        // Función para actualizar el contenido del elemento al redimensionar
+        function updateElementContent(element, newWidth, newHeight) {
+            const elementType = element.className.split(' ').find(c => c.startsWith('element-')).replace('element-', '');
+            
+            switch (elementType) {
+                case 'text':
+                    const textElement = element.querySelector('.element-text');
+                    if (textElement) {
+                        textElement.style.width = (newWidth - 30) + 'px'; // Restar padding
+                        textElement.style.minHeight = (newHeight - 30) + 'px';
+                    }
+                    break;
+                case 'frame':
+                    const frameElement = element.querySelector('.element-frame');
+                    if (frameElement) {
+                        frameElement.style.width = newWidth + 'px';
+                        frameElement.style.height = newHeight + 'px';
+                    }
+                    break;
+                case 'photo':
+                    const imgElement = element.querySelector('img');
+                    if (imgElement) {
+                        imgElement.style.maxWidth = newWidth + 'px';
+                        imgElement.style.maxHeight = newHeight + 'px';
+                        imgElement.style.width = '100%';
+                        imgElement.style.height = '100%';
+                        imgElement.style.objectFit = 'contain';
+                    }
+                    break;
+                case 'sticker':
+                    const stickerElement = element.querySelector('.element-sticker');
+                    if (stickerElement) {
+                        // Ajustar tamaño de fuente basado en el tamaño del elemento
+                        const fontSize = Math.min(newWidth, newHeight) * 0.6;
+                        stickerElement.style.fontSize = fontSize + 'px';
+                        stickerElement.style.lineHeight = newHeight + 'px';
+                        stickerElement.style.textAlign = 'center';
+                    }
+                    break;
+            }
         }
         
         // Additional functions for decoration
         window.addFrameToPage = function() {
+            document.getElementById('frameModal').style.display = 'block';
+        };
+        
+        window.addSelectedFrameToPage = function() {
             addElementToPage('frame', '', 100, 100, {
-                width: 300,
-                height: 200
+                width: 200,
+                height: 150,
+                frameStyle: selectedFrameStyle
             });
-            showNotification('Marco añadido al scrapbook', 'success');
+            document.getElementById('frameModal').style.display = 'none';
+            showNotification('🖼️ Marco decorativo añadido', 'success');
         };
         
         window.addBackgroundToPage = function() {
@@ -601,7 +1162,217 @@
         
         // Configure decoration buttons
         document.querySelector('[data-tool="frame"]').addEventListener('click', addFrameToPage);
-        document.querySelector('[data-tool="background"]').addEventListener('click', addBackgroundToPage);
+        document.querySelector('[data-tool="background"]').addEventListener('click', function() {
+            document.getElementById('backgroundModal').style.display = 'block';
+        });
+        
+        // Text box style selector
+        document.querySelectorAll('.text-box-preview').forEach(preview => {
+            preview.addEventListener('click', function() {
+                document.querySelectorAll('.text-box-preview.selected').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTextBoxStyle = this.getAttribute('data-style');
+                
+                // Desactivar color personalizado cuando se selecciona un estilo
+                document.querySelectorAll('.color-option.selected').forEach(el => el.classList.remove('selected'));
+            });
+        });
+        
+        // Frame style selector
+        document.querySelectorAll('.frame-style-preview').forEach(preview => {
+            preview.addEventListener('click', function() {
+                document.querySelectorAll('.frame-style-preview.selected').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedFrameStyle = this.getAttribute('data-frame');
+                
+                // Añadir el marco inmediatamente
+                addSelectedFrameToPage();
+            });
+        });
+        
+        // Font selector functionality
+        document.querySelectorAll('.font-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.font-option.selected').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedFont = this.getAttribute('data-font');
+            });
+        });
+        
+        // Color palette functionality
+        document.querySelectorAll('.color-option[data-color]').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option.selected').forEach(el => el.classList.remove('selected'));
+                document.querySelectorAll('.text-box-preview.selected').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedColor = this.getAttribute('data-color');
+                selectedTextBoxStyle = null; // Desactivar estilo predefinido
+            });
+        });
+        
+        // Custom color picker
+        document.getElementById('customColorPicker').addEventListener('change', function() {
+            document.querySelectorAll('.color-option.selected').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.text-box-preview.selected').forEach(el => el.classList.remove('selected'));
+            selectedColor = this.value;
+            selectedTextBoxStyle = null; // Desactivar estilo predefinido
+        });
+        
+        // Text formatting buttons
+        document.querySelectorAll('.format-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const format = this.getAttribute('data-format');
+                
+                if (['bold', 'italic', 'underline'].includes(format)) {
+                    this.classList.toggle('active');
+                    textFormatting[format] = this.classList.contains('active');
+                } else if (['left', 'center', 'right'].includes(format)) {
+                    document.querySelectorAll('.format-btn[data-format="left"], .format-btn[data-format="center"], .format-btn[data-format="right"]').forEach(el => el.classList.remove('active'));
+                    this.classList.add('active');
+                    textFormatting.align = format;
+                }
+            });
+        });
+        
+        // Text size slider
+        document.getElementById('textSize').addEventListener('input', function() {
+            document.getElementById('textSizeValue').textContent = this.value + 'px';
+        });
+        
+        // Background color/gradient functionality
+        document.querySelectorAll('#backgroundModal .color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const pageContent = document.getElementById('pageContent');
+                const bgType = this.getAttribute('data-bg');
+                
+                if (bgType === 'solid') {
+                    const color = this.getAttribute('data-color');
+                    pageContent.style.background = color;
+                } else if (bgType === 'gradient') {
+                    const gradient = this.getAttribute('data-gradient');
+                    pageContent.style.background = gradient;
+                }
+                
+                document.getElementById('backgroundModal').style.display = 'none';
+                showNotification('Fondo aplicado', 'success');
+            });
+        });
+        
+        // Function to close modals
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        };
+        
+        // Function to edit text elements
+        function editTextElement(element) {
+            const textDiv = element.querySelector('.element-text');
+            if (textDiv) {
+                textDiv.focus();
+                // Select all text
+                const range = document.createRange();
+                range.selectNodeContents(textDiv);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+        
+        // Function to edit frame elements
+        function editFrameElement(element) {
+            const frame = element.querySelector('.element-frame');
+            if (frame) {
+                const newWidth = prompt('Ancho del marco (px):', frame.style.width.replace('px', ''));
+                const newHeight = prompt('Alto del marco (px):', frame.style.height.replace('px', ''));
+                
+                if (newWidth && newHeight && !isNaN(newWidth) && !isNaN(newHeight)) {
+                    frame.style.width = newWidth + 'px';
+                    frame.style.height = newHeight + 'px';
+                    showNotification('Marco redimensionado', 'success');
+                }
+            }
+        }
+        
+        // Click en área vacía para deseleccionar elementos
+        document.getElementById('pageContent').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.querySelectorAll('.scrapbook-element.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+            }
+        });
+        
+        // Función para mostrar información del elemento seleccionado
+        function showElementInfo(element) {
+            const elementType = element.className.split(' ').find(c => c.startsWith('element-')).replace('element-', '');
+            const rect = element.getBoundingClientRect();
+            
+            let message = '';
+            switch (elementType) {
+                case 'text':
+                    message = '📝 Cuadro de texto seleccionado - Arrastra para mover, usa los puntos para redimensionar';
+                    break;
+                case 'photo':
+                    message = '🖼️ Imagen seleccionada - Arrastra para mover, usa los puntos para redimensionar';
+                    break;
+                case 'frame':
+                    message = '🖼️ Marco seleccionado - Arrastra para mover, usa los puntos para redimensionar';
+                    break;
+                case 'sticker':
+                    message = '⭐ Sticker seleccionado - Arrastra para mover, usa los puntos para redimensionar';
+                    break;
+            }
+            
+            if (message) {
+                showNotification(message, 'info');
+            }
+        }
+        
+        // Mejorar la función de guardar
+        window.saveScrapbook = function() {
+            const pageContent = document.getElementById('pageContent');
+            const elements = Array.from(pageContent.querySelectorAll('.scrapbook-element')).map(el => {
+                return {
+                    id: el.id,
+                    type: el.className.split(' ').find(c => c.startsWith('element-')).replace('element-', ''),
+                    style: el.style.cssText,
+                    innerHTML: el.innerHTML,
+                    position: {
+                        left: el.style.left,
+                        top: el.style.top
+                    }
+                };
+            });
+            
+            const scrapbookData = {
+                background: pageContent.style.background,
+                elements: elements,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('scrapbook_' + Date.now(), JSON.stringify(scrapbookData));
+            showNotification('Scrapbook guardado exitosamente', 'success');
+        };
+        
+        // Mejorar la función de descarga
+        window.downloadScrapbook = function() {
+            const pageContent = document.getElementById('pageContent');
+            
+            // Crear un canvas para capturar la imagen
+            html2canvas(pageContent, {
+                backgroundColor: '#ffffff',
+                scale: 2,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'mi-scrapbook-' + Date.now() + '.png';
+                link.href = canvas.toDataURL();
+                link.click();
+                showNotification('Scrapbook descargado', 'success');
+            }).catch(() => {
+                // Fallback si html2canvas no está disponible
+                showNotification('Función de descarga no disponible. Usa captura de pantalla.', 'info');
+            });
+        };
         
         // Setup modals
         document.querySelectorAll('.close').forEach(closeBtn => {

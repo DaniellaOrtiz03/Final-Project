@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Flipbook</title>
+    <link rel="stylesheet" href="flipbook.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <style>
+        body {
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #c2185b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test del Libro 3D</h1>
+        
+        <div id="flipbook" class="flipbook">
+            <div class="page">
+                <div class="page-content">
+                    <h2 style="text-align: center; margin-top: 200px; color: #e91e63;">Página 1</h2>
+                    <p style="text-align: center;">Haz click en las esquinas para voltear</p>
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content">
+                    <h2 style="text-align: center; margin-top: 200px; color: #e91e63;">Página 2</h2>
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content">
+                    <h2 style="text-align: center; margin-top: 200px; color: #e91e63;">Página 3</h2>
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content">
+                    <h2 style="text-align: center; margin-top: 200px; color: #e91e63;">Página 4</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="$('#flipbook').turn('previous')">← Anterior</button>
+            <button onclick="$('#flipbook').turn('next')">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            console.log('jQuery cargado:', typeof $ !== 'undefined');
+            console.log('Turn.js cargado:', typeof $.fn.turn !== 'undefined');
+            
+            if (typeof $.fn.turn !== 'undefined') {
+                $('#flipbook').turn({
+                    width: 800,
+                    height: 600,
+                    autoCenter: true,
+                    duration: 1000,
+                    gradients: true,
+                    acceleration: true,
+                    elevation: 50
+                });
+                console.log('Flipbook inicializado correctamente');
+            } else {
+                console.error('Turn.js no está disponible');
+            }
+        });
+    </script>
+</body>
+</html>

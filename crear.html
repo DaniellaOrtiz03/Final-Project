@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="crear.css">
     <link rel="stylesheet" href="flipbook.css">
+    <link rel="stylesheet" href="book-frames.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -291,6 +292,11 @@
                     <div class="book-page left-page" id="leftPage">
                         <div class="page-content editable-page" id="leftPageContent">
                             <div class="page-number">Página <span id="leftPageNum">1</span></div>
+
+                            <!-- Canvas libre estilo Canva -->
+                            <div class="page-layout">
+                                <!-- Los elementos se añadirán dinámicamente aquí -->
+                            </div>
                         </div>
                     </div>
 
@@ -298,6 +304,11 @@
                     <div class="book-page right-page" id="rightPage">
                         <div class="page-content editable-page" id="rightPageContent">
                             <div class="page-number">Página <span id="rightPageNum">2</span></div>
+
+                            <!-- Canvas libre estilo Canva -->
+                            <div class="page-layout">
+                                <!-- Los elementos se añadirán dinámicamente aquí -->
+                            </div>
                         </div>
                     </div>
 
@@ -322,15 +333,114 @@
     </section>
 
     <!-- Modals -->
-    <div id="photoModal" class="modal">
+    <!-- Modal de selección de forma de marco -->
+    <div id="frameShapeModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Añadir Foto</h3>
-            <input type="file" id="photoInput" accept="image/*">
-            <div class="photo-preview" id="photoPreview"></div>
-            <button class="btn-primary" onclick="addPhotoToPage()">Añadir a la Página</button>
+            <span class="close" onclick="closeModal('frameShapeModal')">&times;</span>
+            <h3>🎨 Selecciona la forma del marco</h3>
+            <p style="color: #666; margin-bottom: 1rem;">Elige una forma creativa para tu contenido</p>
+
+            <div class="frame-shapes-grid">
+                <!-- Círculo -->
+                <div class="frame-shape-option" onclick="selectFrameShape('circle')">
+                    <div class="frame-shape-preview shape-circle">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <span class="frame-shape-name">Círculo</span>
+                </div>
+
+                <!-- Cuadrado -->
+                <div class="frame-shape-option" onclick="selectFrameShape('square')">
+                    <div class="frame-shape-preview shape-square">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <span class="frame-shape-name">Cuadrado</span>
+                </div>
+
+                <!-- Redondeado -->
+                <div class="frame-shape-option" onclick="selectFrameShape('rounded')">
+                    <div class="frame-shape-preview shape-rounded">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <span class="frame-shape-name">Redondeado</span>
+                </div>
+
+                <!-- Corazón -->
+                <div class="frame-shape-option" onclick="selectFrameShape('heart')">
+                    <div class="frame-shape-preview shape-heart">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="frame-shape-name">Corazón</span>
+                </div>
+
+                <!-- Estrella -->
+                <div class="frame-shape-option" onclick="selectFrameShape('star')">
+                    <div class="frame-shape-preview shape-star">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="frame-shape-name">Estrella</span>
+                </div>
+
+                <!-- Hexágono -->
+                <div class="frame-shape-option" onclick="selectFrameShape('hexagon')">
+                    <div class="frame-shape-preview shape-hexagon">
+                        <i class="fas fa-hexagon"></i>
+                    </div>
+                    <span class="frame-shape-name">Hexágono</span>
+                </div>
+
+                <!-- Octágono -->
+                <div class="frame-shape-option" onclick="selectFrameShape('octagon')">
+                    <div class="frame-shape-preview shape-octagon">
+                        <i class="fas fa-stop"></i>
+                    </div>
+                    <span class="frame-shape-name">Octágono</span>
+                </div>
+
+                <!-- Nube -->
+                <div class="frame-shape-option" onclick="selectFrameShape('cloud')">
+                    <div class="frame-shape-preview shape-cloud">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <span class="frame-shape-name">Nube</span>
+                </div>
+
+                <!-- Onda -->
+                <div class="frame-shape-option" onclick="selectFrameShape('wave')">
+                    <div class="frame-shape-preview shape-wave">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <span class="frame-shape-name">Onda</span>
+                </div>
+
+                <!-- Diamante -->
+                <div class="frame-shape-option" onclick="selectFrameShape('diamond')">
+                    <div class="frame-shape-preview shape-diamond">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <span class="frame-shape-name">Diamante</span>
+                </div>
+
+                <!-- Etiqueta -->
+                <div class="frame-shape-option" onclick="selectFrameShape('tag')">
+                    <div class="frame-shape-preview shape-tag">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <span class="frame-shape-name">Etiqueta</span>
+                </div>
+
+                <!-- Polaroid -->
+                <div class="frame-shape-option" onclick="selectFrameShape('polaroid')">
+                    <div class="frame-shape-preview shape-polaroid">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="frame-shape-name">Polaroid</span>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
     <div id="textModal" class="modal">
         <div class="modal-content">
@@ -597,202 +707,11 @@
 
     <script src="script.js"></script>
     <script src="simple-book.js"></script>
+    <script src="book-frames.js"></script>
     <script>
         console.log('🎨 Script del libro cargado');
 
-        // ===== LIBRO 3D CON CSS PURO =====
 
-        let bookPages = [];
-        let currentFlipbookPage = 0;
-        let flipbookInitialized = false;
-
-        // Inicializar el libro 3D cuando se selecciona una plantilla
-        function initializeFlipbook() {
-            if (flipbookInitialized) return;
-
-            console.log('Inicializando flipbook...');
-
-            // Crear páginas iniciales (10 páginas por defecto)
-            for (let i = 0; i < 10; i++) {
-                bookPages.push({
-                    id: i + 1,
-                    elements: [],
-                    background: 'linear-gradient(135deg, #fefefe, #f8f9fa)'
-                });
-            }
-
-            // Esperar a que jQuery y Turn.js estén disponibles
-            if (typeof $ === 'undefined' || typeof $.fn.turn === 'undefined') {
-                console.error('jQuery o Turn.js no están cargados');
-                setTimeout(initializeFlipbook, 500);
-                return;
-            }
-
-            try {
-                // Inicializar Turn.js
-                $('#flipbook').turn({
-                    width: 800,
-                    height: 600,
-                    autoCenter: true,
-                    duration: 1000,
-                    gradients: true,
-                    acceleration: true,
-                    elevation: 50,
-                    when: {
-                        turning: function (event, page, view) {
-                            updatePageIndicator(page);
-                        },
-                        turned: function (event, page, view) {
-                            currentFlipbookPage = page;
-                            console.log('Página actual:', page);
-                        }
-                    }
-                });
-
-                flipbookInitialized = true;
-                updatePageIndicator(1);
-                console.log('Flipbook inicializado correctamente');
-
-                // Hacer las páginas editables
-                makeBookPagesEditable();
-            } catch (error) {
-                console.error('Error al inicializar flipbook:', error);
-            }
-        }
-
-        // Las páginas ya están en el HTML, no necesitamos generarlas
-
-        // Actualizar indicador de página
-        function updatePageIndicator(page) {
-            document.getElementById('currentBookPage').textContent = page;
-            document.getElementById('currentBookPageNext').textContent = page + 1;
-            document.getElementById('totalBookPages').textContent = bookPages.length;
-        }
-
-        // Navegar a la página anterior
-        window.flipToPreviousPage = function () {
-            $('#flipbook').turn('previous');
-        };
-
-        // Navegar a la página siguiente
-        window.flipToNextPage = function () {
-            $('#flipbook').turn('next');
-        };
-
-        // Añadir nueva página al libro
-        window.addNewBookPage = function () {
-            if (!flipbookInitialized) {
-                showNotification('❌ El libro no está inicializado', 'error');
-                return;
-            }
-
-            const newPageId = bookPages.length + 1;
-            const newPage = {
-                id: newPageId,
-                elements: [],
-                background: 'linear-gradient(135deg, #fefefe, #f8f9fa)'
-            };
-
-            bookPages.push(newPage);
-
-            // Añadir la nueva página al flipbook
-            const pageDiv = document.createElement('div');
-            pageDiv.className = 'page';
-            pageDiv.innerHTML = `
-                <div class="page-content" id="page-content-${newPageId}">
-                    <div class="page-number">Página ${newPageId}</div>
-                </div>
-            `;
-
-            $('#flipbook').turn('addPage', pageDiv, newPageId);
-
-            // Ir a la nueva página
-            $('#flipbook').turn('page', newPageId);
-
-            updatePageIndicator(newPageId);
-            showNotification(`📄 Nueva página añadida (Total: ${bookPages.length})`, 'success');
-        };
-
-        // Hacer las páginas editables (permitir añadir elementos)
-        function makeBookPagesEditable() {
-            document.querySelectorAll('.page-content').forEach(pageContent => {
-                pageContent.addEventListener('click', function (e) {
-                    if (e.target === this) {
-                        const pageId = this.id.replace('page-content-', '');
-                        selectPageForEditing(pageId);
-                    }
-                });
-
-                // Permitir drag and drop de elementos
-                pageContent.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                });
-
-                pageContent.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    // Aquí se manejaría el drop de elementos
-                });
-            });
-        }
-
-        // Seleccionar página para editar
-        function selectPageForEditing(pageId) {
-            const page = bookPages.find(p => p.id == pageId);
-            if (page) {
-                // Aquí se cargarían los elementos de la página en el editor
-                console.log('Editando página:', pageId);
-                showNotification(`✏️ Editando página ${pageId}`, 'info');
-            }
-        }
-
-        // Cargar elementos de una página
-        function loadPageElements(pageNumber) {
-            const page = bookPages[pageNumber - 1];
-            if (page && page.elements.length > 0) {
-                const pageContent = document.getElementById(`page-content-${page.id}`);
-                // Aquí se renderizarían los elementos guardados
-                page.elements.forEach(element => {
-                    // Renderizar elemento
-                });
-            }
-        }
-
-        // Guardar elemento en la página actual
-        function saveElementToCurrentPage(element) {
-            if (currentFlipbookPage > 0) {
-                const page = bookPages[currentFlipbookPage - 1];
-                if (page) {
-                    page.elements.push(element);
-                }
-            }
-        }
-
-        // Responsive: Ajustar tamaño del libro según la pantalla
-        function resizeFlipbook() {
-            const width = window.innerWidth;
-            let bookWidth, bookHeight;
-
-            if (width > 1024) {
-                bookWidth = 800;
-                bookHeight = 600;
-            } else if (width > 768) {
-                bookWidth = 600;
-                bookHeight = 450;
-            } else if (width > 480) {
-                bookWidth = 400;
-                bookHeight = 300;
-            } else {
-                bookWidth = 300;
-                bookHeight = 225;
-            }
-
-            if (flipbookInitialized) {
-                $('#flipbook').turn('size', bookWidth, bookHeight);
-            }
-        }
-
-        // Escuchar cambios de tamaño de ventana
-        window.addEventListener('resize', resizeFlipbook);
 
         // ===== LIBRO 3D CON CSS PURO =====
 
@@ -1108,13 +1027,61 @@
             });
         });
 
-        // Setup tool buttons
-        document.querySelectorAll('.floating-toolbar .tool-btn[data-tool]').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const tool = this.getAttribute('data-tool');
-                openToolModal(tool);
+        // Setup tool buttons - Integrado con sistema de marcos
+        setTimeout(() => {
+            document.querySelectorAll('.floating-toolbar .tool-btn[data-tool]').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const tool = this.getAttribute('data-tool');
+                    console.log('🔘 Botón clickeado:', tool);
+                    
+                    // Usar el nuevo sistema de marcos para foto y texto
+                    if (tool === 'photo') {
+                        console.log('📷 Intentando abrir selector de imagen');
+                        
+                        // Encontrar la página visible actualmente
+                        const visiblePage = document.querySelector('.page-layout');
+                        console.log('📄 Página visible:', visiblePage);
+                        
+                        if (visiblePage && window.openShapeModal) {
+                            window.currentPage = visiblePage;
+                            window.openShapeModal('image');
+                            console.log('✅ Modal de formas abierto para imagen');
+                        } else {
+                            console.error('❌ Error:', {
+                                visiblePage: !!visiblePage,
+                                openShapeModal: !!window.openShapeModal
+                            });
+                        }
+                    } else if (tool === 'text') {
+                        console.log('📝 Intentando abrir selector de texto');
+                        
+                        // Encontrar la página visible actualmente
+                        const visiblePage = document.querySelector('.page-layout');
+                        console.log('📄 Página visible:', visiblePage);
+                        
+                        if (visiblePage && window.openShapeModal) {
+                            window.currentPage = visiblePage;
+                            window.openShapeModal('text');
+                            console.log('✅ Modal de formas abierto para texto');
+                        } else {
+                            console.error('❌ Error:', {
+                                visiblePage: !!visiblePage,
+                                openShapeModal: !!window.openShapeModal
+                            });
+                        }
+                    } else {
+                        // Para otros tools, usar el sistema antiguo
+                        console.log('🔧 Abriendo modal para:', tool);
+                        openToolModal(tool);
+                    }
+                });
             });
-        });
+            
+            console.log('✅ Event listeners añadidos a los botones');
+        }, 1000);
 
         // Tool modal functions
         function openToolModal(tool) {

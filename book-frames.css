@@ -1,0 +1,533 @@
+/* ===== SISTEMA DE MARCOS ESTILO CANVA ===== */
+
+/* Layout de páginas del libro */
+.page-layout {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+    overflow: visible; /* Permitir que elementos salgan un poco */
+}
+
+/* Asegurar que el número de página no interfiera */
+.page-number {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #999;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Toolbar flotante para añadir elementos - OCULTA */
+.add-element-toolbar {
+    display: none !important;
+}
+
+.add-element-btn {
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.2);
+}
+
+.add-element-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    background: linear-gradient(135deg, #f06292, #e91e63);
+}
+
+.add-element-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+}
+
+.add-element-btn i {
+    font-size: 1rem;
+}
+
+/* Elementos arrastrables */
+.draggable-element {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    transition: box-shadow 0.2s ease;
+}
+
+.draggable-element:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.draggable-element.selected {
+    box-shadow: 0 0 0 3px #e91e63;
+    z-index: 50;
+}
+
+.draggable-element.dragging {
+    opacity: 0.8;
+    z-index: 1000;
+}
+
+/* Marco de imagen */
+.image-frame {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 3px dashed rgba(233, 30, 99, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.image-frame.has-image {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.image-frame.has-image:hover::after {
+    content: '📷 Click para cambiar imagen';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.image-frame-placeholder {
+    text-align: center;
+    color: #e91e63;
+    pointer-events: none;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.image-frame-placeholder i {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 0.8rem;
+    opacity: 0.8;
+}
+
+.image-frame-placeholder span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #666;
+    display: block;
+    background: rgba(233, 30, 99, 0.1);
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 150px;
+}
+
+/* Marco de texto */
+.text-frame {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    padding: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(233, 30, 99, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-frame textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: transparent;
+    color: #333;
+    line-height: 1.6;
+}
+
+.text-frame textarea::placeholder {
+    color: #bbb;
+}
+
+/* Formas de marcos */
+.shape-circle {
+    border-radius: 50%;
+}
+
+.shape-square {
+    border-radius: 10px;
+}
+
+.shape-rounded {
+    border-radius: 25px;
+}
+
+.shape-heart {
+    clip-path: polygon(50% 15%, 60% 5%, 70% 0%, 80% 5%, 85% 15%, 90% 30%, 85% 45%, 75% 55%, 50% 85%, 25% 55%, 15% 45%, 10% 30%, 15% 15%, 20% 5%, 30% 0%, 40% 5%);
+}
+
+.shape-star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.shape-hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.shape-octagon {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.shape-cloud {
+    border-radius: 100px 100px 20px 20px;
+}
+
+.shape-wave {
+    border-radius: 50% 50% 0 0;
+}
+
+.shape-diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.shape-tag {
+    border-radius: 5px 25px 25px 5px;
+}
+
+.shape-polaroid {
+    border-radius: 8px;
+}
+
+/* Controles de elemento */
+.element-controls {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    display: none;
+    gap: 8px;
+    z-index: 103;
+}
+
+.draggable-element.selected .element-controls {
+    display: flex;
+}
+
+.element-control-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background: #e91e63;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.element-control-btn:hover {
+    background: #c2185b;
+    transform: scale(1.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.element-control-btn:active {
+    transform: scale(1.05);
+}
+
+.element-control-btn.delete-btn {
+    background: #f44336;
+}
+
+.element-control-btn.delete-btn:hover {
+    background: #d32f2f;
+}
+
+.element-control-btn.shape-btn {
+    background: #4caf50;
+}
+
+.element-control-btn.shape-btn:hover {
+    background: #388e3c;
+}
+
+/* Handles de redimensionamiento */
+.resize-handles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: none;
+    z-index: 102;
+}
+
+.draggable-element.selected .resize-handles {
+    display: block;
+}
+
+.resize-handle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border: 3px solid #e91e63;
+    border-radius: 50%;
+    pointer-events: all;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.resize-handle:hover {
+    background: #e91e63;
+    transform: scale(1.3);
+    box-shadow: 0 3px 12px rgba(233, 30, 99, 0.5);
+}
+
+.resize-handle:active {
+    transform: scale(1.1);
+}
+
+.resize-handle.nw {
+    top: -6px;
+    left: -6px;
+    cursor: nw-resize;
+}
+
+.resize-handle.ne {
+    top: -6px;
+    right: -6px;
+    cursor: ne-resize;
+}
+
+.resize-handle.sw {
+    bottom: -6px;
+    left: -6px;
+    cursor: sw-resize;
+}
+
+.resize-handle.se {
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+}
+
+.resize-handle.n {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: n-resize;
+}
+
+.resize-handle.s {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: s-resize;
+}
+
+.resize-handle.w {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: w-resize;
+}
+
+.resize-handle.e {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: e-resize;
+}
+
+/* Modal de selección de formas */
+#frameShapeModal .modal-content {
+    max-width: 650px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+#frameShapeModal h3 {
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.frame-shapes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.frame-shape-option {
+    aspect-ratio: 1;
+    background: #f8f9fa;
+    border: 3px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.frame-shape-option:hover {
+    border-color: #e91e63;
+    background: rgba(233, 30, 99, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+.frame-shape-preview {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.frame-shape-name {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.draggable-element {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Indicador de tamaño */
+.size-indicator {
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+    z-index: 104;
+}
+
+.draggable-element.resizing .size-indicator {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .frame-shapes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .frame-shape-preview {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .add-element-toolbar {
+        bottom: 5px;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    .add-element-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .frame-shapes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .frame-shape-preview {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .frame-shape-name {
+        font-size: 0.65rem;
+    }
+
+    .add-element-toolbar {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .add-element-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}

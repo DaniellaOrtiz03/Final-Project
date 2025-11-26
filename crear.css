@@ -397,9 +397,9 @@
     position: relative;
     width: 600px;
     height: 400px;
-    background: #e8f4fd;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
     animation: fadeInUp 0.8s ease;
     overflow: hidden;
 }
@@ -1620,5 +1620,419 @@ nimación para eliminar elementos */
 
     to {
         opacity: 0.4;
+    }
+}
+/*
+ ===== ESTILOS CREATIVOS Y DINÁMICOS PARA PLACEHOLDERS ===== */
+
+/* Estilos base para placeholders de imágenes */
+.image-placeholder {
+    position: relative;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
+    border: 3px dashed rgba(255, 255, 255, 0.5);
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.image-placeholder:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 15px 40px rgba(255, 154, 158, 0.5);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.image-placeholder i {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.image-placeholder span {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen principal - Forma de corazón */
+.image-placeholder.main-image {
+    width: 250px;
+    height: 220px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.03);
+    }
+}
+
+.image-placeholder.main-image::after {
+    content: '📸';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Imágenes pequeñas - Formas creativas */
+.image-placeholder.small-image {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.image-placeholder.small-image:nth-child(2) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    animation-delay: 0.5s;
+}
+
+.image-placeholder.small-image i {
+    font-size: 2rem;
+}
+
+.image-placeholder.small-image span {
+    font-size: 0.8rem;
+}
+
+/* Estilos para placeholders de texto */
+.text-placeholder {
+    position: relative;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(168, 237, 234, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.text-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.text-placeholder:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(168, 237, 234, 0.6);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.text-placeholder i {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    animation: wiggle 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.text-placeholder span {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Área de texto grande - Forma de nube */
+.text-placeholder.text-area {
+    width: 260px;
+    height: 140px;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-radius: 100px 100px 20px 20px;
+    position: relative;
+    animation: pulse-soft 3s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(252, 182, 159, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(252, 182, 159, 0.6);
+    }
+}
+
+.text-placeholder.text-area::after {
+    content: '✨';
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 1.5rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
+}
+
+/* Layout de página con grid creativo */
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.page-layout.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+    padding: 20px;
+}
+
+.page-layout.layout-grid .text-area {
+    grid-column: 1 / -1;
+}
+
+/* Efectos adicionales de decoración */
+.image-placeholder::after,
+.text-placeholder::after {
+    z-index: 0;
+}
+
+/* Variaciones de colores para diferentes placeholders */
+.page-layout .image-placeholder:nth-child(1) {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.page-layout .image-placeholder:nth-child(2) {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.page-layout .text-placeholder:nth-child(odd) {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+}
+
+.page-layout .text-placeholder:nth-child(even) {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+/* Efectos hover mejorados con partículas */
+.image-placeholder:hover::before,
+.text-placeholder:hover::before {
+    animation-duration: 1.5s;
+}
+
+/* Animación de entrada para los placeholders */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-placeholder,
+.text-placeholder {
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.image-placeholder:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.image-placeholder:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.text-placeholder:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+/* Efectos de sombra dinámica */
+.image-placeholder:active,
+.text-placeholder:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Decoraciones adicionales con pseudo-elementos */
+.image-placeholder.main-image::before {
+    content: '💝';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    animation-delay: 0.5s;
+}
+
+/* Responsive para placeholders creativos */
+@media (max-width: 768px) {
+    .image-placeholder.main-image {
+        width: 200px;
+        height: 180px;
+    }
+    
+    .image-placeholder.small-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .text-placeholder.text-area {
+        width: 220px;
+        height: 120px;
+    }
+    
+    .image-placeholder i {
+        font-size: 2.5rem;
+    }
+    
+    .text-placeholder i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-placeholder.main-image {
+        width: 150px;
+        height: 140px;
+    }
+    
+    .image-placeholder.small-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .text-placeholder.text-area {
+        width: 180px;
+        height: 100px;
+    }
+    
+    .page-layout {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .page-layout.layout-grid {
+        gap: 10px;
+        padding: 15px;
     }
 }
